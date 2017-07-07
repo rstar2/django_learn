@@ -1,0 +1,5 @@
+# Make Python Virtual Env
+$ python3 -m venv env
+
+# Install Python packages
+$ pip install -r requirements.txt
