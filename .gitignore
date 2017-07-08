@@ -4,3 +4,7 @@ env/
 .pyc
 
 .vscode/
+
+# skip static file that are coppied from Django when doing 
+# $ python manage.py collectstatic
+/static/static-only/
