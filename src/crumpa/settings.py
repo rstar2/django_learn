@@ -37,8 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # added some crispy forms
+    'crispy_forms',
+    
     'views',
-    'profiles'
+    'profiles',
+
+    # Needed for Django-allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +69,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
+            'context_processors': [ 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -127,3 +137,24 @@ if DEBUG:
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'static-only')
     # STATICFILES_DIRS should be a tuple or list - so the trailing comma
     STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR), 'static', 'static'),)
+
+# Template framework for CrispyForms - bootsrap (default), bootstrap3, bootstrap4, foundation, uni-form
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Needed for Django-allauth
+
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+ACCOUNT_URL_PREFIX = "account"
+LOGIN_URL = "/" + ACCOUNT_URL_PREFIX + "/login/"
+LOGIN_REDIRECT_URL = "/"
+from .settings_allauth import *
+
+# Email sending settings
+from .settings_email import *

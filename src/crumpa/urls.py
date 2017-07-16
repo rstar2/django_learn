@@ -13,19 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 from views import views
 # from profiles import views as profiles_views
 
 urlpatterns = [
-    url(r'^$', views.home, name="home"),  # name="home" -> name of the URL
     url(r'^admin/', admin.site.urls),
-]
 
-from django.conf import settings
-from django.conf.urls.static import static
+    # Needed for Django-allauth
+    url(r'^' + settings.ACCOUNT_URL_PREFIX + r'/', include('allauth.urls')),
+
+    url(r'^$', views.home, name="home"),  # name="home" -> name of the URL
+    url(r'^about/$', views.about, name="about"),
+    url(r'^contact/$', views.contact, name="contact"),
+    url(r'^profile/$', views.profile, name="profile"),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
