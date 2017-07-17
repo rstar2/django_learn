@@ -3,7 +3,6 @@ env/
 **/__pycache__/
 .pyc
 
-.vscode/
 
 # skip static file that are coppied from Django when doing 
 # $ python manage.py collectstatic
