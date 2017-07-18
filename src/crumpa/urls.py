@@ -33,6 +33,10 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name="profile"),
 ]
 
+# By default, the development server doesn’t serve any static files for your site
+# (such as CSS files, images, things under MEDIA_URL and so forth).
+# It has to be configured explicitely if wanted "$ python manage.py runserver" to server them
+# !!! THIS SHOULD BE DONE ONLY IN DEVELOPMENT MODE, NOT PRODUCTION
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

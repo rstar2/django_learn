@@ -25,7 +25,15 @@ SECRET_KEY = 'tdlh(_pt^h^)g8hzq!7%xtq7j16-h(=ctr)%6uv^xv=5--abb3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Note that the default IP address, 127.0.0.1,
+# is not accessible from other machines on your network.
+# To make your development server viewable to other machines on the network,
+# use its own IP address (e.g. 192.168.0.101) or 0.0.0.0 or :: (with IPv6 enabled).
+# Thus if run with "$ python manage.py runserver 0.0.0.0:8000" it will be available
+# on all machinces in the local network, not just on the local 127.0.0.1
+# (like if just run with "$ python manage.py runserver 8000")
+# If run with specified ID/HOST then it has to be added in the ALLOWED_HOSTS array
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.101", "crampa.com"]
 
 
 # Application definition
@@ -131,14 +139,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# By default, the development server doesn’t serve any static files for your site
+# (such as CSS files, images, things under MEDIA_URL and so forth).
+# It has to be configured explicitely if wanted "$ python manage.py runserver" to server them
+# !!! THIS SHOULD BE DONE ONLY IN DEVELOPMENT MODE, NOT PRODUCTION
 if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'media')
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'static-only')
-    # STATICFILES_DIRS should be a tuple or list - so the trailing comma
-    STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR), 'static', 'static'),)
+    STATICFILES_DIRS = [os.path.join(os.path.dirname(BASE_DIR), 'static', 'static')]
 
-# Template framework for CrispyForms - bootsrap (default), bootstrap3, bootstrap4, foundation, uni-form
+# Template framework for CrispyForms - bootsrap (default), bootstrap3,
+# bootstrap4, foundation, uni-form
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Needed for Django-allauth
