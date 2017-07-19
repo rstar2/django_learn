@@ -27,7 +27,7 @@
                         <li><a href="{% url 'account_signup' %}">Signup</a></li>
                         {% else %}
                         <li><a href="{% url 'account_logout' %}">Logout</a></li>
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'profiles_get' profile_id=user.username %}">Profile</a></li>
                         {% endif %}
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Nav header</li>

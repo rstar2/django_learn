@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from django.contrib.auth.decorators import login_required
 
 from .forms import ContactForm
 
 # Create your views here.
+
 
 def home(request):
     """ This is the Home page handler """
@@ -42,11 +42,4 @@ def contact(request):
 
     context = {'form': form}
     template = 'contact.html'
-    return render(request, template, context)
-
-
-@login_required
-def profile(request):
-    context = locals()
-    template = 'profile.html'
     return render(request, template, context)
