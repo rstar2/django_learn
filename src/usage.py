@@ -35,8 +35,9 @@ profilesAll = Profile.objects.all()
 for profile in profilesAll:
     print(profile.name)
 
-# Retrieve specific record by its ID using get(ID)
-profileSpecific = Profile.objects.get(pk=1)  # get the first
+# Retrieve specific record by its ID using get(ID) (get(id=1) or get(field_name=xxxx))
+# Note if more then one record is in the Db then error will be raised
+profileSpecific = Profile.objects.get(id=1)  # get the first
 print(profileSpecific)
 
 # Update a record

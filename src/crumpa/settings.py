@@ -33,7 +33,7 @@ DEBUG = True
 # on all machinces in the local network, not just on the local 127.0.0.1
 # (like if just run with "$ python manage.py runserver 8000")
 # If run with specified ID/HOST then it has to be added in the ALLOWED_HOSTS array
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.101", "crampa.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.101", "84.40.123.238", "crampa.com"]
 
 
 # Application definition
