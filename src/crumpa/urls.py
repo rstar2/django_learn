@@ -18,20 +18,17 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from views import views
-# from profiles import views as profiles_views
-
 urlpatterns = [
+    # Django admin module
     url(r'^admin/', admin.site.urls),
 
-    # Needed for Django-allauth
+    # Django-allauth 
     url(r'^' + settings.ACCOUNT_URL_PREFIX + r'/', include('allauth.urls')),
 
-    url(r'^$', views.home, name="home"),  # name="home" -> name of the URL
-    url(r'^about/$', views.about, name="about"),
-    url(r'^contact/$', views.contact, name="contact"),
+    # include all main urls in the 'views' app under the main root
+    url(r'^', include('views.urls')),
 
-    # include all ulrs in the 'profiles' app under a single path
+    # include all urls in the 'profiles' app under a single root - "/profiles"
     url(r'^profiles/', include('profiles.urls')),
 ]
 
