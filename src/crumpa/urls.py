@@ -30,6 +30,9 @@ urlpatterns = [
 
     # include all urls in the 'profiles' app under a single root - "/profiles"
     url(r'^profiles/', include('profiles.urls')),
+
+    # added the 'polls' app from the Dajbago Tutorial
+    url(r'^polls/', include('polls.urls')),
 ]
 
 # By default, the development server doesn’t serve any static files for your site

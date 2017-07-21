@@ -46,17 +46,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # added some crispy forms
-    'crispy_forms',
-    
-    'views',
-    'profiles',
-
     # Needed for Django-allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # added some crispy forms
+    'crispy_forms',
+
+    # my apps
+    'views',
+    'profiles',
+
+    # "polls" all from DjangoTutorial
+    # https://docs.djangoproject.com/en/1.11/intro/tutorial01/
+    # https://github.com/mdamien/django-tutorial/blob/master/polls/templates/polls/index.html
+    'polls'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +80,9 @@ ROOT_URLCONF = 'crumpa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # this will allow templates to be searched in the specified dirs also
+        # and so we can overwite the "admin" templates in it
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [ 
